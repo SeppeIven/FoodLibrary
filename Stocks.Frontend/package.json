@@ -1,0 +1,45 @@
+{
+  "name": "sepskisbudgettingtool",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@types/chart.js": "^2.9.5",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.15.0",
+    "chart.js": "^2.9.3",
+    "core-js": "^2.6.5",
+    "current-week-number": "^1.0.7",
+    "fetch-intercept": "^2.3.1",
+    "http": "0.0.0",
+    "jquery": "^3.4.1",
+    "jwt-decode": "^2.2.0",
+    "oidc-client": "^1.9.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.8",
+    "vue": "^2.6.10",
+    "vue-chartjs": "^3.5.0",
+    "vue-class-component": "^7.0.2",
+    "vue-property-decorator": "^8.1.0",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.3",
+    "vuetify": "^2.0.17",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-typescript": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "sass": "^1.17.4",
+    "sass-loader": "^7.1.0",
+    "typescript": "^3.4.3",
+    "vue-cli-plugin-vuetify": "^0.6.3",
+    "vue-template-compiler": "^2.6.10",
+    "vuetify-loader": "^1.2.2"
+  }
+}
