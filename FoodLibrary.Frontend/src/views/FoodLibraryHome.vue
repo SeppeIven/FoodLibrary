@@ -3,7 +3,7 @@
 <div class="home">
         <h1 align="center">Food Library</h1>
         <DefaultTable />
-</div>
+</div>  
 
 
 </template>

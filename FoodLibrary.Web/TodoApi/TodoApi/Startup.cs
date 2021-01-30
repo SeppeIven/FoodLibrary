@@ -40,7 +40,11 @@ namespace TodoApi
                 opt.UseInMemoryDatabase("TodoList"));
 
             services.AddDbContext<StockPurchaseContext>(options => 
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("StocksDatabaseConnection")));
+
+            services.AddDbContext<FoodLibraryContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("FoodLibraryDatabaseConnection")));
+
             /*services.AddDbContext<StockPurchaseContext>(options =>
                 {
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")); //, options => options.EnableRetryOnFailure());

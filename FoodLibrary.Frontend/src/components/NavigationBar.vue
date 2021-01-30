@@ -9,6 +9,7 @@
       <b-navbar-nav>
         <b-nav-item to="/">Overview</b-nav-item>
         <b-nav-item to="/add-stock-purchase" >Add stock purchase</b-nav-item>
+        <b-nav-item to="/food-library-home">Food library home</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->

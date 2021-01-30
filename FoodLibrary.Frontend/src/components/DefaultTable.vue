@@ -86,7 +86,7 @@
             <b-form-datepicker id="example-datepicker" v-model="purchasedateForStockPurchase" class="mb-2"></b-form-datepicker>
           </div>
 
-          <button @click="submitNewStockPurchase" class="btn btn-success">Submit</button>
+          <!-- <button @click="submitNewStockPurchase" class="btn btn-success">Submit</button> -->
         </div>
 
         <!-- <div v-else>
@@ -99,7 +99,7 @@
 </template>
 
 <script lang="ts">
-import StockPurchasesDataService from "../services/StockPurchasesDataService";
+import FoodLibraryDataService from "../services/FoodLibraryDataService";
 import axios from 'axios';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
@@ -108,7 +108,7 @@ export default class DefaultTable extends Vue {
 
   public perPage: number = 3;
   public currentPage: number = 1;
-  public items: StockPurchase[] = [];
+  public items: Dish[] = [];
 
   public trackerForStockPurchase="VUSA";
   public pricepershareForStockPurchase=20;
@@ -116,9 +116,8 @@ export default class DefaultTable extends Vue {
   public longorshortForStockPurchase="Long";
   public buyorsellForStockPurchase="Buy";
   public purchasedateForStockPurchase = new Date;
-  //public purchasedateForStockPurchase= "0001-01-01T00:00:00";
 
-  private newStockPurchase: StockPurchaseWithoutID = {Tracker:"",PricePerShare:0,Amount:0,LongOrShort:"",BuyOrSell:"",PurchaseDate:new Date()};
+  //private newStockPurchase: StockPurchaseWithoutID = {Tracker:"",PricePerShare:0,Amount:0,LongOrShort:"",BuyOrSell:"",PurchaseDate:new Date()};
 
   private submitted: boolean = false;
 
@@ -127,9 +126,9 @@ export default class DefaultTable extends Vue {
   }
 
   public async created(){
-    StockPurchasesDataService.getAll()
+    FoodLibraryDataService.getAll()
       .then((response) => {
-        this.items = response.data as StockPurchase[];
+        this.items = response.data as Dish[];
         console.log(response.data);
       })
       .catch((e) => {
@@ -137,7 +136,7 @@ export default class DefaultTable extends Vue {
       });
   }
 
-  public submitNewStockPurchase():void{
+/*   public submitNewStockPurchase():void{
     this.newStockPurchase.Tracker = this.trackerForStockPurchase;
     this.newStockPurchase.PricePerShare = this.pricepershareForStockPurchase;
     this.newStockPurchase.Amount = this.amountForStockPurchase;
@@ -146,31 +145,19 @@ export default class DefaultTable extends Vue {
     this.newStockPurchase.PurchaseDate = this.purchasedateForStockPurchase;
     console.log(this.newStockPurchase);
     StockPurchasesDataService.create(this.newStockPurchase);
-  }
+  } */
 
 
 
 
 }
 
-
-export interface StockPurchaseWithoutID {
-  Tracker: string;
-  PricePerShare: number;
-  Amount: number;
-  LongOrShort: string;
-  BuyOrSell: string;
-  PurchaseDate: Date;
-}
-
-export interface StockPurchase {
+export interface Dish {
   ID: number;
-  Tracker: string;
-  PricePerShare: number;
-  Amount: number;
-  LongOrShort: string;
-  BuyOrSell: string;
-  PurchaseDate: Date;
+  Name: string;
+  PreparationTimeMinutes: number;
+  Meat: string;
+  MealType: string;
 }
 
 </script>
