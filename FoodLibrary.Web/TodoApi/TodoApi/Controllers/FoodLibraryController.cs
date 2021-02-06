@@ -28,6 +28,13 @@ namespace TodoApi.Controllers
                 .ToListAsync();
         }
 
+        [HttpGet("NineRandom")]
+        public async Task<ActionResult<IEnumerable<Dish>>> GetNineRandomDishes()
+        {
+            var NineRandomDishesQuery = _context.Dishes.OrderBy(r => Guid.NewGuid()).Take(9);
+            return await NineRandomDishesQuery.ToListAsync();
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Dish>> GetDish(int id)
         {

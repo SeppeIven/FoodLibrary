@@ -1,8 +1,12 @@
 import http from "../http-common";
 
-class TutorialDataService {
+class FoodLibraryDataService {
   getAll() {
     return http.get("/FoodLibrary");
+  }
+
+  getNineRandomDishes() {
+    return http.get("/FoodLibrary/NineRandom")
   }
 
   get(id: string) {
@@ -27,4 +31,12 @@ class TutorialDataService {
 
 }
 
-export default new TutorialDataService();
+export default new FoodLibraryDataService();
+
+export interface Dish {
+  id: number;
+  name: string;
+  preparationTimeMinutes: number;
+  meat: string;
+  mealType: string;
+}

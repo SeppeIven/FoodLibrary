@@ -2,7 +2,7 @@
   
 <div class="home">
         <h1 align="center">Food Library</h1>
-        <DefaultTable />
+        <NineRandomDishes />
 </div>  
 
 
@@ -11,12 +11,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import VueResource from 'vue-resource';
-import MonthlyIncome from '../components/MonthlyIncome.vue'
-import DefaultTable from '../components/DefaultTable.vue'
+import NineRandomDishes from '../components/NineRandomDishes.vue'
 
     export default Vue.extend({
     components: {
-        DefaultTable
+        NineRandomDishes
     },
     
     });

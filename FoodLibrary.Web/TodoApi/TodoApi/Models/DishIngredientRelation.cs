@@ -5,24 +5,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TodoApi.Models
 {
-    public class Dish
+    public class DishIngredientRelation
     {
- 
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Required]
-        [Display(Name = "Name")]
-        public string Name { get; set; }
+        public Dish dish { get; set; }
 
-        public int PreparationTimeMinutes { get; set; }
+        [Required]
+        public Ingredient ingredient { get; set; }
 
-        [Display(Name = "Meat")]
-        public string Meat { get; set; }
+        public int AmountPerPerson { get; set; }
 
-        public string MealType { get; set; }
+        public string UnitType { get; set; }
 
     }
- 
+
 
 }
 

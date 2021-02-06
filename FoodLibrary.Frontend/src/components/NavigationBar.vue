@@ -7,9 +7,9 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item to="/">Overview</b-nav-item>
-        <b-nav-item to="/add-stock-purchase" >Add stock purchase</b-nav-item>
-        <b-nav-item to="/food-library-home">Food library home</b-nav-item>
+        <b-nav-item to="/">Home</b-nav-item>
+        <b-nav-item to="/add-dish" >Add dish</b-nav-item>
+        <b-nav-item to="/view-dish-details/3" >View dish 3 details</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->

@@ -36,8 +36,8 @@ namespace TodoApi
                        .AllowAnyHeader();
             }));
 
-            services.AddDbContext<TodoContext>(opt =>
-                opt.UseInMemoryDatabase("TodoList"));
+            //services.AddDbContext<TodoContext>(opt =>
+            //    opt.UseInMemoryDatabase("TodoList"));
 
             services.AddDbContext<StockPurchaseContext>(options => 
                 options.UseNpgsql(Configuration.GetConnectionString("StocksDatabaseConnection")));

@@ -8,5 +8,8 @@ namespace TodoApi.Models
         }
         public DbSet<Dish> Dishes { get; set; }
 
+        public DbSet<Ingredient> Ingredients { get; set; }
+
+        public DbSet<DishIngredientRelation> DishIngredientRelations { get; set; }
     }
 }

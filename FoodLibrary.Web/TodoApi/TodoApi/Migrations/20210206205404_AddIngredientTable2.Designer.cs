@@ -6,26 +6,26 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TodoApi.Models;
 
-namespace TodoApi.Migrations.FoodLibrary
+namespace TodoApi.Migrations
 {
     [DbContext(typeof(FoodLibraryContext))]
-    [Migration("20210130204503_CreateFoodLibraryContext")]
-    partial class CreateFoodLibraryContext
+    [Migration("20210206205404_AddIngredientTable2")]
+    partial class AddIngredientTable2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.5")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .UseIdentityByDefaultColumns()
+                .HasAnnotation("Relational:MaxIdentifierLength", 63)
+                .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("TodoApi.Models.Dish", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .UseIdentityByDefaultColumn();
 
                     b.Property<string>("MealType")
                         .HasColumnType("text");
@@ -37,12 +37,28 @@ namespace TodoApi.Migrations.FoodLibrary
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("PreprationTimeMinutes")
+                    b.Property<int>("PreparationTimeMinutes")
                         .HasColumnType("integer");
 
                     b.HasKey("ID");
 
                     b.ToTable("Dishes");
+                });
+
+            modelBuilder.Entity("TodoApi.Models.Ingredient", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Ingredients");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,23 +1,6 @@
 <template>
-  <div>
-    <b-row>
-      <b-col></b-col>
-      <b-col>          
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="rows"
-          :per-page="perPage"
-          aria-controls="my-table"
-        ></b-pagination>
-      </b-col>
-      <b-col></b-col>
-    </b-row>
-    <b-row>
-      <b-col></b-col>
-      <b-col cols="8"><b-table striped hover :items="items" :per-page="perPage" :current-page="currentPage"></b-table></b-col>
-      <b-col></b-col>
-    </b-row>
-    <b-row>
+  <b-container>
+    <b-row align-h="center">
       <div class="submit-form">
         <div v-if="!submitted">
 
@@ -95,7 +78,7 @@
         </div> -->
       </div>
     </b-row>
-  </div>
+  </b-container>
 </template>
 
 <script lang="ts">
@@ -104,7 +87,7 @@ import axios from 'axios';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
-export default class DefaultTable extends Vue {
+export default class AddDish extends Vue {
 
   public perPage: number = 3;
   public currentPage: number = 1;
@@ -120,21 +103,6 @@ export default class DefaultTable extends Vue {
   //private newStockPurchase: StockPurchaseWithoutID = {Tracker:"",PricePerShare:0,Amount:0,LongOrShort:"",BuyOrSell:"",PurchaseDate:new Date()};
 
   private submitted: boolean = false;
-
-  private get rows(): number {
-    return this.items.length;
-  }
-
-  public async created(){
-    FoodLibraryDataService.getAll()
-      .then((response) => {
-        this.items = response.data as Dish[];
-        console.log(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
 
 /*   public submitNewStockPurchase():void{
     this.newStockPurchase.Tracker = this.trackerForStockPurchase;
@@ -161,10 +129,3 @@ export interface Dish {
 }
 
 </script>
-
-<style scoped>
-.submit-form {
-  max-width: 300px;
-  margin: auto;
-}
-</style>

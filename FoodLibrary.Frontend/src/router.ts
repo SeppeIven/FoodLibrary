@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Home from './views/Home.vue';
-import AddStockPurchase from './views/AddStockPurchase.vue';
+import AddDish from './views/AddDish.vue';
 import FoodLibraryHome from './views/FoodLibraryHome.vue';
+import ViewDishDetails from './views/ViewDishDetails.vue';
 
 Vue.use(Router);
 
@@ -16,20 +16,20 @@ let router = new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home,
+      component: FoodLibraryHome,
       meta: {
         requiresAuth: true
       },
     },
     {
-      path:'/add-stock-purchase',
-      name:'AddStockPurchase',
-      component: AddStockPurchase
+      path:'/add-dish',
+      name:'AddDish',
+      component: AddDish
     },  
     {
-      path:'/food-library-home',
-      name:'FoodLibraryHome',
-      component: FoodLibraryHome
+      path:'/view-dish-details/:dishID',
+      name:'ViewDishDetails',
+      component: ViewDishDetails
     },  
   ],
 });
