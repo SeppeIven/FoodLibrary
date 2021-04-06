@@ -9,7 +9,7 @@
         >
           <b-form-input
             id="input-1"
-            v-model="DishToBeAdded.Name"
+            v-model="DishToBeAdded.name"
             type="text"
             placeholder="Dish name"
             required
@@ -19,7 +19,7 @@
         <b-form-group id="input-group-2" label="Preparation time in minutes:" label-for="input-2">
           <b-form-input
             id="input-2"
-            v-model="DishToBeAdded.PreparationTimeMinutes"
+            v-model="DishToBeAdded.preparationTimeMinutes"
             type="number"
             placeholder="Preparation time (minutes)"
             required
@@ -29,7 +29,7 @@
         <b-form-group id="input-group-3" label="Meat type:" label-for="input-3">
           <b-form-select
             id="input-3"
-            v-model="DishToBeAdded.meatTypes"
+            v-model="DishToBeAdded.meat"
             :options="meatTypes"
             required
           ></b-form-select>
@@ -58,6 +58,7 @@
 import FoodLibraryDataService from "../services/FoodLibraryDataService";
 import axios from 'axios';
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import {Dish} from '../services/FoodLibraryDataService';
 
 @Component
 export default class AddDish extends Vue {
@@ -68,34 +69,12 @@ public mealTypes: String[] = ["Lunch", "Dinner", "Snack"];
 
 public dishName: string = "";
 
-public DishToBeAdded: Dish = {ID:1,Name:"",PreparationTimeMinutes:10,Meat:"",MealType:""};
+public DishToBeAdded: Dish = {id:1,name:"",preparationTimeMinutes:10,meat:"",mealType:""};
 
 public submitDish():void{
 
 }
 
-/*   public submitNewStockPurchase():void{
-    this.newStockPurchase.Tracker = this.trackerForStockPurchase;
-    this.newStockPurchase.PricePerShare = this.pricepershareForStockPurchase;
-    this.newStockPurchase.Amount = this.amountForStockPurchase;
-    this.newStockPurchase.LongOrShort = this.longorshortForStockPurchase;
-    this.newStockPurchase.BuyOrSell = this.buyorsellForStockPurchase;
-    this.newStockPurchase.PurchaseDate = this.purchasedateForStockPurchase;
-    console.log(this.newStockPurchase);
-    StockPurchasesDataService.create(this.newStockPurchase);
-  } */
-
-
-
-
-}
-
-export interface Dish {
-  ID: number;
-  Name: string;
-  PreparationTimeMinutes: number;
-  Meat: string;
-  MealType: string;
 }
 
 </script>

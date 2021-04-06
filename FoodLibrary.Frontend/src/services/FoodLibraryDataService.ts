@@ -1,32 +1,32 @@
 import http from "../http-common";
 
 class FoodLibraryDataService {
-  getAll() {
-    return http.get("/FoodLibrary");
+  public async getAllDishes(): Promise<Dish[]> {
+    const results = await http.get("/FoodLibrary");
+    return results.data
   }
 
-  getNineRandomDishes() {
-    return http.get("/FoodLibrary/NineRandom")
+  public async getNineRandomDishes(): Promise<Dish[]> {
+    const results = await http.get("/FoodLibrary/NineRandom");
+    return results.data;
   }
 
-  get(id: string) {
-    return http.get(`/FoodLibrary/${id}`);
+  public async getDishByID(id: string): Promise<Dish> {
+    const results = await http.get(`/FoodLibrary/${id}`);
+    return results.data;
   }
 
-  create(data: any) {
-    return http.post("/FoodLibrary", data);
+  public async AddDish(data: any): Promise<Dish> {
+    const results = await http.post("/FoodLibrary", data);
+    return results.data;
   }
 
-  update(id: string, data: any) {
-    return http.put(`/FoodLibrary/${id}`, data);
+  public async updateDish(id: string, data: any): Promise<void> {
+    await http.put(`/FoodLibrary/${id}`, data);
   }
 
-  delete(id: string) {
-    return http.delete(`/FoodLibrary/${id}`);
-  }
-
-  deleteAll() {
-    return http.delete(`/FoodLibrary`);
+  public async deleteDish(id: string): Promise<void> {
+    await http.delete(`/FoodLibrary/${id}`);
   }
 
 }

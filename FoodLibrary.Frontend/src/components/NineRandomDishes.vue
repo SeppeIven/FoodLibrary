@@ -37,18 +37,10 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class NineRandomDishes extends Vue {
 
-  public items: Dish[] = [];
-
-  private submitted: boolean = false;
+  public nineRandomDishes: Dish[] = [];
 
   public async created(){
-    FoodLibraryDataService.getNineRandomDishes()
-      .then((response) => {
-        this.items = response.data as Dish[];
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    this.nineRandomDishes = await FoodLibraryDataService.getNineRandomDishes();
   }
 }
 
