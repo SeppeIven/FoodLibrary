@@ -1,84 +1,57 @@
 <template>
-  <b-container>
-    <b-row align-h="center">
-      <div class="submit-form">
-        <div v-if="!submitted">
+  <div>
+    <b-container>
+      <b-form v-if="showAddDishForm">
+        <b-form-group
+          id="input-group-1"
+          label="Dish name:"
+          label-for="input-1"
+        >
+          <b-form-input
+            id="input-1"
+            v-model="DishToBeAdded.Name"
+            type="text"
+            placeholder="Dish name"
+            required
+          ></b-form-input>
+        </b-form-group>
 
-          <div class="form-group">
-            <label for="title">Tracker</label>
-            <input
-              type="text"
-              class="form-control"
-              id="Tracker"
-              required
-              v-model="trackerForStockPurchase"
-              name="Tracker"
-            />
-          </div>
+        <b-form-group id="input-group-2" label="Preparation time in minutes:" label-for="input-2">
+          <b-form-input
+            id="input-2"
+            v-model="DishToBeAdded.PreparationTimeMinutes"
+            type="number"
+            placeholder="Preparation time (minutes)"
+            required
+          ></b-form-input>
+        </b-form-group>
 
-          <div class="form-group">
-            <label for="title">Price per share</label>
-            <input
-              type="number"
-              class="form-control"
-              id="PricePerShare"
-              required
-              v-model="pricepershareForStockPurchase"
-              name="PricePerShare"
-            />
-          </div>
+        <b-form-group id="input-group-3" label="Meat type:" label-for="input-3">
+          <b-form-select
+            id="input-3"
+            v-model="DishToBeAdded.meatTypes"
+            :options="meatTypes"
+            required
+          ></b-form-select>
+        </b-form-group>
 
-          <div class="form-group">
-            <label for="title">Amount</label>
-            <input
-              type="number"
-              class="form-control"
-              id="Amount"
-              required
-              v-model="amountForStockPurchase"
-              name="Amount"
-            />
-          </div>
+        <b-form-group id="input-group-4" label="Meal type:" label-for="input-4">
+          <b-form-select
+            id="input-4"
+            v-model="DishToBeAdded.mealTypes"
+            :options="mealTypes"
+            required
+          ></b-form-select>
+        </b-form-group>
 
-          <div class="form-group">
-            <label for="title">Long or short</label>
-            <input
-              type="text"
-              class="form-control"
-              id="LongOrShort"
-              required
-              v-model="longorshortForStockPurchase"
-              name="LongOrShort"
-            />
-          </div>
 
-          <div class="form-group">
-            <label for="title">Buy or sell</label>
-            <input
-              type="text"
-              class="form-control"
-              id="BuyOrSell"
-              required
-              v-model="buyorsellForStockPurchase"
-              name="BuyOrSell"
-            />
-          </div>
+        <button @click="submitDish" class="btn btn-success">Submit</button>
 
-          <div class="form-group">
-            <label for="example-datepicker">Purchase date</label>
-            <b-form-datepicker id="example-datepicker" v-model="purchasedateForStockPurchase" class="mb-2"></b-form-datepicker>
-          </div>
-
-          <!-- <button @click="submitNewStockPurchase" class="btn btn-success">Submit</button> -->
-        </div>
-
-        <!-- <div v-else>
-          <h4>You submitted successfully!</h4>
-          <button class="btn btn-success" @click="submitNewStockPurchase">Add</button>
-        </div> -->
-      </div>
-    </b-row>
-  </b-container>
+        <!-- <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button type="reset" variant="danger">Reset</b-button> -->
+      </b-form>
+    </b-container>
+  </div>
 </template>
 
 <script lang="ts">
@@ -89,20 +62,17 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class AddDish extends Vue {
 
-  public perPage: number = 3;
-  public currentPage: number = 1;
-  public items: Dish[] = [];
+public showAddDishForm: boolean = true;
+public meatTypes: String[] = ["Normal", "Veggie", "Vegan"];
+public mealTypes: String[] = ["Lunch", "Dinner", "Snack"];
 
-  public trackerForStockPurchase="VUSA";
-  public pricepershareForStockPurchase=20;
-  public amountForStockPurchase=30;
-  public longorshortForStockPurchase="Long";
-  public buyorsellForStockPurchase="Buy";
-  public purchasedateForStockPurchase = new Date;
+public dishName: string = "";
 
-  //private newStockPurchase: StockPurchaseWithoutID = {Tracker:"",PricePerShare:0,Amount:0,LongOrShort:"",BuyOrSell:"",PurchaseDate:new Date()};
+public DishToBeAdded: Dish = {ID:1,Name:"",PreparationTimeMinutes:10,Meat:"",MealType:""};
 
-  private submitted: boolean = false;
+public submitDish():void{
+
+}
 
 /*   public submitNewStockPurchase():void{
     this.newStockPurchase.Tracker = this.trackerForStockPurchase;
