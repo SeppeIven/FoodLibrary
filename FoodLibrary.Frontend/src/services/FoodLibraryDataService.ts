@@ -40,3 +40,10 @@ export interface Dish {
   meat: string;
   mealType: string;
 }
+
+export interface DishWithoutID {
+  name: string;
+  preparationTimeMinutes: number;
+  meat: string;
+  mealType: string;
+}

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <b-row v-for="i in Math.ceil(items.length / 3)" :key="i">
+    <b-row v-for="i in Math.ceil(nineRandomDishes.length / 3)" :key="i">
       <b-col></b-col>
       <b-col cols="8">
           <b-card-group deck>
             <b-card
-              v-for="item in items.slice((i-1)*3,i*3)" 
+              v-for="item in nineRandomDishes.slice((i-1)*3,i*3)" 
               v-bind:key="item.id"
               v-bind:title="item.name"
               img-src="https://picsum.photos/600/300/?image=25"
@@ -16,10 +16,11 @@
               class="mb-2"
             >
               <b-card-text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+                Preparation time (minutes): {{item.preparationTimeMinutes}} <br>
+                {{item.meat}} <br>
+                {{item.mealType}}
               </b-card-text>
-
-              <b-button href="#" variant="primary">Go somewhere</b-button>
+              <b-button href="#" class="btn btn-success">Details</b-button>
             </b-card>
           </b-card-group>
       </b-col>
@@ -47,8 +48,7 @@ export default class NineRandomDishes extends Vue {
 </script>
 
 <style scoped>
-.submit-form {
-  max-width: 300px;
-  margin: auto;
+.v-application a {
+    color: white;
 }
 </style>
